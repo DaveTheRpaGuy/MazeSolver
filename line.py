@@ -1,4 +1,4 @@
-from point import *
+from point import Point
 
 class Line:
     def __init__(self, point_one, point_two):
