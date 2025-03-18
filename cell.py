@@ -3,7 +3,7 @@ from line import Line
 from window import Window
 
 class Cell:
-    def __init__(self, win):
+    def __init__(self, win=None):
         self._x1 = 0
         self._x2 = 0
         self._y1 = 0
@@ -13,6 +13,7 @@ class Cell:
         self.has_right_wall = True
         self.has_top_wall = True
         self.has_bottom_wall = True
+        self.visited = False
 
     def draw(self, x1, y1, x2, y2):
         if self._win is None:
@@ -24,15 +25,27 @@ class Cell:
         if self.has_left_wall:
             line = Line(Point(x1, y1), Point(x1, y2))
             line.draw(self._win.canvas, "black")
+        else:
+            line = Line(Point(x1, y1), Point(x1, y2))
+            line.draw(self._win.canvas, "white")
         if self.has_right_wall:
             line = Line(Point(x2, y1), Point(x2, y2))
             line.draw(self._win.canvas, "black")
+        else:
+            line = Line(Point(x2, y1), Point(x2, y2))
+            line.draw(self._win.canvas, "white")
         if self.has_top_wall:
             line = Line(Point(x1, y1), Point(x2, y1))
             line.draw(self._win.canvas, "black")
+        else:
+            line = Line(Point(x1, y1), Point(x2, y1))
+            line.draw(self._win.canvas, "white")
         if self.has_bottom_wall:
             line = Line(Point(x1, y2), Point(x2, y2))
             line.draw(self._win.canvas, "black")
+        else:
+            line = Line(Point(x1, y2), Point(x2, y2))
+            line.draw(self._win.canvas, "white")
 
     def draw_move(self, to_cell, undo=False):
         color = "red"

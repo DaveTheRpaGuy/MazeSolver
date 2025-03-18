@@ -9,3 +9,6 @@ class Line:
         canvas.create_line(
             self.point_one.x, self.point_one.y, self.point_two.x, self.point_two.y, fill=fill_color, width=2
         )
+    
+    def __str__(self):
+        return f"{self.point_one.x},{self.point_one.y} to {self.point_two.x},{self.point_two.y}"
